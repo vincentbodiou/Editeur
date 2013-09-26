@@ -17,7 +17,8 @@ public class Dessin extends JPanel{
 		DessinListener listener = new DessinListener();
 		setBackground(Color.black);
 		addMouseListener(listener);	
-		addMouseMotionListener(listener);		
+		addMouseMotionListener(listener);	
+		int i;
 	}
 	
 	public void paint(Graphics g)
