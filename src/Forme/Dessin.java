@@ -1,15 +1,16 @@
+package Forme;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 
-public class Dessin extends JPanel{
+public abstract class Dessin extends JPanel{
 
-	private int x1,x2,y1,y2;
+	private static final long serialVersionUID = 1L;
+	private int x1,y1;
 	
 	public Dessin() {
 		// TODO Auto-generated constructor stub
@@ -17,14 +18,12 @@ public class Dessin extends JPanel{
 		DessinListener listener = new DessinListener();
 		setBackground(Color.black);
 		addMouseListener(listener);	
-		addMouseMotionListener(listener);	
-		
+		addMouseMotionListener(listener);		
 	}
 	
 	public void paint(Graphics g)
 	{
-		super.paint(g);
-		g.drawRect(0,0,getWidth()-1, getHeight()-1);		
+		super.paint(g);		
 	}
 	
 	class DessinListener implements MouseListener, MouseMotionListener
