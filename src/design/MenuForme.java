@@ -15,23 +15,21 @@ import Forme.CreateEllipse;
 import Forme.CreateRectangle;
 
 
-public class MenuForme extends JPanel implements Observable {
+public class MenuForme extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	ButtonGroup buttonGroup=new ButtonGroup();
-	JRadioButton buttonEllipse = new JRadioButton("Ellipse");
-	JRadioButton buttonRect = new JRadioButton("Rectangle");
-	ZoneDeDessin zone;
-	GridLayout gridLayout;
-	JPanel panelButton;
-	private List<Observateur> observateurs;
-	private CreateDessin createDessin;
+	private ButtonGroup buttonGroup=new ButtonGroup();
+	private JRadioButton buttonEllipse = new JRadioButton("Ellipse");
+	private JRadioButton buttonRect = new JRadioButton("Rectangle");
+	private ZoneDeDessin zone;
+	private GridLayout gridLayout;
+	private JPanel panelButton;
+	
 	
 	 public MenuForme(ZoneDeDessin zone)
 	 {
 		this.zone=zone;
 				
-		observateurs = new ArrayList<Observateur>();
 		setBackground(Color.gray);
 		setSize(150, 800);
 		setLocation(0,0);
@@ -53,7 +51,7 @@ public class MenuForme extends JPanel implements Observable {
 	 class FormListener implements ActionListener
 	 {
 		 private ZoneDeDessin zone;
-		 		 
+		 private CreateDessin createDessin;		 
 		 
 		 public FormListener(ZoneDeDessin zone,CreateDessin createDessinn)
 		 {
@@ -63,27 +61,11 @@ public class MenuForme extends JPanel implements Observable {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			zone.setCreateDessin(createDessin);
-			notifierObservateur();
+			zone.setCreateDessin(createDessin);			
 		}	
 		 
 	 }
 	 
-	 @Override
-		public void ajouterObservateur(Observateur o) {
-			observateurs.add(o);
-		}
-
-		@Override
-		public void supprimerObservateur(Observateur o) {
-			observateurs.remove(o);
-		}
-
-		@Override
-		public void notifierObservateur() {
-			for (Observateur observateur : observateurs) {
-				observateur.actualiserForme(createDessin);
-			}
-		}
+	
 	
 }

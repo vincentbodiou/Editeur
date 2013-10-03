@@ -10,19 +10,13 @@ import Forme.Dessin;
 public class Apercu extends JPanel implements Observateur{
 
 	private static final long serialVersionUID = 1L;
-	private JPanel zoneApercu;
 	private ZoneDeDessin zone;
-	private MenuForme menuForme;
-	private Dessin dessin;
 	
-	
-	public Apercu(ZoneDeDessin zone, MenuForme menuForme)
+	public Apercu(ZoneDeDessin zone)
 	{
-		this.zone=zone;
-		this.menuForme=menuForme;
+		this.zone=zone;		
 		this.zone.ajouterObservateur(this);
-		
-		
+			
 		setBackground(Color.cyan);
 	}
 
@@ -31,10 +25,6 @@ public class Apercu extends JPanel implements Observateur{
 		setBackground(zone.getBackground());		
 	}
 
-	@Override
-	public void actualiserForme(CreateDessin createDessin) {
-		createDessin.creerDessin();		
-	}
-
+	
 	
 }

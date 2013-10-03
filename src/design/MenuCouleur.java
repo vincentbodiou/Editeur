@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
@@ -23,14 +22,11 @@ public class MenuCouleur extends JPanel{
 	private JPanel panelButton;
 	private GridLayout gridLayout;
 	private Apercu apercu;
-	private MenuForme menuForme;
 	
 	public MenuCouleur(ZoneDeDessin zone, MenuForme menuForme)
 	{
 		this.zone = zone;
-		this.menuForme = menuForme;
-		
-		apercu = new Apercu(this.zone, this.menuForme);
+		apercu = new Apercu(this.zone);
 		
 		
 		buttonGroup.add(bleue);
