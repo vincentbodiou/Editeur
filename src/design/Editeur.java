@@ -22,6 +22,7 @@ public class Editeur extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private ZoneDeDessin zoneDessin;
 	private MenuCouleur menuCouleur;
+	private MenuForme menuForme;
 	
 	
 	public Editeur()
@@ -36,10 +37,11 @@ public class Editeur extends JFrame{
 		
 		addWindowListener (new Fermeur ());
 		zoneDessin = new ZoneDeDessin(); 
-		menuCouleur = new MenuCouleur(zoneDessin);
-		
+		menuForme = new MenuForme(zoneDessin);
+		menuCouleur = new MenuCouleur(zoneDessin, menuForme);
+				
 		getContentPane().add(BorderLayout.CENTER, zoneDessin);
-		getContentPane().add(BorderLayout.WEST, new MenuForme(zoneDessin));
+		getContentPane().add(BorderLayout.WEST, menuForme);
 		getContentPane().add(BorderLayout.EAST, menuCouleur);
 				
 		setVisible(true);

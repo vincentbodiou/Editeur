@@ -14,21 +14,23 @@ import javax.swing.JPanel;
 public class MenuCouleur extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	JCheckBox bleue = new JCheckBox("Bleue");
-	JCheckBox jaune = new JCheckBox("Jaune");
-	JCheckBox blanc = new JCheckBox("Blanc");
-	JCheckBox vert = new JCheckBox("Vert");
-	ButtonGroup buttonGroup=new ButtonGroup();
-	ZoneDeDessin zone;
-	JPanel panelButton;
-	GridLayout gridLayout;
-	Apercu apercu;
+	private JCheckBox bleue = new JCheckBox("Bleue");
+	private JCheckBox jaune = new JCheckBox("Jaune");
+	private JCheckBox blanc = new JCheckBox("Blanc");
+	private JCheckBox vert = new JCheckBox("Vert");
+	private ButtonGroup buttonGroup=new ButtonGroup();
+	private ZoneDeDessin zone;
+	private JPanel panelButton;
+	private GridLayout gridLayout;
+	private Apercu apercu;
+	private MenuForme menuForme;
 	
-	public MenuCouleur(ZoneDeDessin zone)
+	public MenuCouleur(ZoneDeDessin zone, MenuForme menuForme)
 	{
 		this.zone = zone;
+		this.menuForme = menuForme;
 		
-		apercu = new Apercu();
+		apercu = new Apercu(this.zone, this.menuForme);
 		
 		
 		buttonGroup.add(bleue);
@@ -51,6 +53,8 @@ public class MenuCouleur extends JPanel{
 		vert.addActionListener(new CouleurListener(zone, Color.green));
 		jaune.addActionListener(new CouleurListener(zone, Color.yellow));
 		
+		
+		
 		setLayout(new BorderLayout());		
 		add(BorderLayout.NORTH,panelButton);
 		add(BorderLayout.SOUTH, apercu);
@@ -72,6 +76,8 @@ public class MenuCouleur extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			zone.setBackground(couleur);
+			zone.notifierObservateur();
+			
 		}
 	}
 

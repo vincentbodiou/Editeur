@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -10,12 +12,13 @@ import Forme.CreateDessin;
 import Forme.Dessin;
 
 
-public class ZoneDeDessin extends JPanel {
+public class ZoneDeDessin extends JPanel implements Observable{
 
 	private static final long serialVersionUID = 1L;
 	private int x1,x2,y1,y2;
 	private Dessin dessin;
 	private CreateDessin createDessin;
+	private List<Observateur> observateurs;
 
 	public ZoneDeDessin() {		
 		setBackground(Color.white);
@@ -23,6 +26,8 @@ public class ZoneDeDessin extends JPanel {
 		addMouseListener(listener);	
 		addMouseMotionListener(listener);
 		setLayout(null);
+		observateurs = new ArrayList<Observateur>();
+		 
 	}
 	
 	public void setCreateDessin(CreateDessin cd)
@@ -80,6 +85,26 @@ public class ZoneDeDessin extends JPanel {
 			
 		}
 		
+	}
+
+
+	@Override
+	public void ajouterObservateur(Observateur o) {
+		observateurs.add(o);		
+	}
+	
+
+	@Override
+	public void supprimerObservateur(Observateur o) {
+		observateurs.remove(o);
+	}
+	
+
+	@Override
+	public void notifierObservateur() {
+		for (Observateur observateur : observateurs) {
+			observateur.actualiser();
+		}
 	}
 
 }
