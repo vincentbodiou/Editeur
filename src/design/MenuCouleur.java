@@ -26,7 +26,7 @@ public class MenuCouleur extends JPanel{
 	public MenuCouleur(ZoneDeDessin zone, MenuForme menuForme)
 	{
 		this.zone = zone;
-		apercu = new Apercu(this.zone);
+		apercu = new Apercu();
 		
 		
 		buttonGroup.add(bleue);
@@ -71,9 +71,7 @@ public class MenuCouleur extends JPanel{
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			zone.setBackground(couleur);
-			zone.notifierObservateur();
-			
+			zone.setForeground(couleur);			
 		}
 	}
 

@@ -12,22 +12,19 @@ import Forme.CreateDessin;
 import Forme.Dessin;
 
 
-public class ZoneDeDessin extends JPanel implements Observable{
+public class ZoneDeDessin extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private int x1,x2,y1,y2;
 	private Dessin dessin;
 	private CreateDessin createDessin;
-	private List<Observateur> observateurs;
 
 	public ZoneDeDessin() {		
 		setBackground(Color.white);
 		FormListener listener = new FormListener();
 		addMouseListener(listener);	
 		addMouseMotionListener(listener);
-		setLayout(null);
-		observateurs = new ArrayList<Observateur>();
-		 
+		setLayout(null);		
 	}
 	
 	public void setCreateDessin(CreateDessin cd)
@@ -62,6 +59,7 @@ public class ZoneDeDessin extends JPanel implements Observable{
 			x1 = e.getX();
 			y1 = e.getY();
 			dessin = createDessin.creerDessin();
+			dessin.setForeground(getForeground());
 			add(dessin,0);
 		}
 
@@ -85,26 +83,6 @@ public class ZoneDeDessin extends JPanel implements Observable{
 			
 		}
 		
-	}
-
-
-	@Override
-	public void ajouterObservateur(Observateur o) {
-		observateurs.add(o);		
-	}
-	
-
-	@Override
-	public void supprimerObservateur(Observateur o) {
-		observateurs.remove(o);
-	}
-	
-
-	@Override
-	public void notifierObservateur() {
-		for (Observateur observateur : observateurs) {
-			observateur.actualiser();
-		}
-	}
+	}	
 
 }

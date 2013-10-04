@@ -1,4 +1,5 @@
 package Forme;
+import java.awt.Color;
 import java.awt.Graphics;
 
 
@@ -6,9 +7,6 @@ public class Rectangle extends Dessin {
 
 	private static final long serialVersionUID = 1L;
 
-	public Rectangle() {
-		
-	}
 	
 	public void paint(Graphics g)
 	{

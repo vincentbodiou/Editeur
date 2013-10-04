@@ -14,12 +14,10 @@ public abstract class Dessin extends JPanel{
 	
 	public Dessin() {
 		// TODO Auto-generated constructor stub
-		setBackground(null);
 		DessinListener listener = new DessinListener();
-		setBackground(Color.black);
 		addMouseListener(listener);	
 		addMouseMotionListener(listener);		
-	}
+	}	
 	
 	public void paint(Graphics g)
 	{

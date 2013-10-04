@@ -10,15 +10,11 @@ class Fermeur extends WindowAdapter {
 	   public void windowClosing (WindowEvent e) {
 	      System.exit (0) ;
 	   }
-
 }
 
 
 public class Editeur extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ZoneDeDessin zoneDessin;
 	private MenuCouleur menuCouleur;

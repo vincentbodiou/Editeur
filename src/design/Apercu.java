@@ -7,24 +7,14 @@ import javax.swing.JPanel;
 import Forme.CreateDessin;
 import Forme.Dessin;
 
-public class Apercu extends JPanel implements Observateur{
+public class Apercu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private ZoneDeDessin zone;
 	
-	public Apercu(ZoneDeDessin zone)
+	public Apercu()
 	{
-		this.zone=zone;		
-		this.zone.ajouterObservateur(this);
-			
+				
 		setBackground(Color.cyan);
 	}
 
-	@Override
-	public void actualiser() {
-		setBackground(zone.getBackground());		
-	}
-
-	
-	
 }
