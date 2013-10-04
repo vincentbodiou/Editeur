@@ -27,6 +27,8 @@ public class MenuCouleur extends JPanel{
 	{
 		this.zone = zone;
 		apercu = new Apercu();
+		zone.addPropertyChangeListener("foreground", apercu);
+		zone.addPropertyChangeListener("forme", apercu);
 		
 		
 		buttonGroup.add(bleue);
@@ -71,7 +73,8 @@ public class MenuCouleur extends JPanel{
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			zone.setForeground(couleur);			
+			zone.setForegroundColor(couleur);			
+			
 		}
 	}
 

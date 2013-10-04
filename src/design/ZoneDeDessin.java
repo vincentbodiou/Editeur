@@ -22,14 +22,22 @@ public class ZoneDeDessin extends JPanel {
 	public ZoneDeDessin() {		
 		setBackground(Color.white);
 		FormListener listener = new FormListener();
-		addMouseListener(listener);	
+		addMouseListener(listener);
 		addMouseMotionListener(listener);
 		setLayout(null);		
 	}
 	
+	public void setForegroundColor(Color c)
+	{
+		setForeground(c);
+		firePropertyChange("foreground", null, c);
+	}
+	
+	
 	public void setCreateDessin(CreateDessin cd)
 	{
 		createDessin=cd;
+		firePropertyChange("forme", null, createDessin);
 	}
 		
 	
